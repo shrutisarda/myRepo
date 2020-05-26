@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Login</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/app.css}">
+   </head>
+   <body>
+      <th:block th:include="/header"></th:block>
+       
+      <div class="login-container">
+         <h3>Enter email and password</h3>
+          <span style="color:red"
+                  th:utext="${message}">  
+               </span>
+         <br>
+         <!-- /login?error=true -->
+         <form method="POST"
+            th:action="@{/welcome}" th:modelAttribute ="user">
+            <table>
+               <tr>
+                  <td>Email *</td>
+                  <td><input name="email" /></td>
+               </tr>
+               <tr>
+                  <td>Password *</td>
+                  <td><input type="password" name="password" /></td>
+               </tr>
+               <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                      <input type="submit" value="Login" />
+                      <input type="reset"  value="Reset" />
+                  </td>
+               </tr>
+            </table>
+         </form>
+          
+         <span class="error-message" th:utext="${error}"></span>
+      </div>
+       
+      <div style="text-align:left">
+          <h3>Email/Password:</h3>
+          <ul>        
+             <li>employee@mindtree.com/abc123</li>
+          </ul>
+      </div>
+       
+      <th:block th:include="/footer"></th:block>
+       
+   </body>
+</html>

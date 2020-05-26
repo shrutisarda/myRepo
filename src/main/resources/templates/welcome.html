@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Account Info</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/app.css}">
+   </head>
+   <body>
+    
+      <th:block th:include="/header"></th:block>
+       
+      <div class="page-title">Welcome</div>
+      <div class="account-container">
+         <ul>
+            <li>Welcome <span th:utext="${userDetails.userName}"></span>
+            <br>Please<a class="navi-item"
+               th:href="@{/products}">Click here</a>to view Products.
+            </li>
+         </ul>
+      </div>
+       
+      <th:block th:include="/footer"></th:block>
+       
+   </body>
+</html>

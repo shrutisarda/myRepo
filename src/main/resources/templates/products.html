@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Product List</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/app.css}">
+   </head>
+   <body>
+      <th:block th:include="/header"></th:block>
+      <th:block th:include="/menu"></th:block>
+       
+      <div class="page-title">Product List</div>
+      <div class="container">
+      <form th:object="${products}" th:action="@{/searchProduct?search}" method="get">
+       <div class="header-bar">
+        <input type="text" name="search" id="search" th:value="${search}"/>
+        <input type="submit" value="Search"/>
+        <h3><span th:utext="${noProductsMessage}"></span></h3>
+    	</div>
+      <div class="product-preview-container" th:each="prodInfo : ${products}">
+         <ul>
+            <li>Id: <span th:utext="${prodInfo.productId}"></span></li>
+            <li>Name: <span th:utext="${prodInfo.productName}"></span></li>
+            <li>Price: <span th:utext="${prodInfo.price}"></span></li>
+            <li>
+               <a th:href="@{|/buyProduct?productId=${prodInfo.productId}|}">Buy Now</a>
+            </li>
+         </ul>
+      </div>
+      
+     </form>
+       </div>
+      <th:block th:include="/footer"></th:block>
+       
+   </body>
+</html>
